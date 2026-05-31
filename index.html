@@ -1,0 +1,381 @@
+```html
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ModuloMaster</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    <script async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <h1>ModuloMaster</h1>
+        <p>
+            Lernapp für Modulare Arithmetik,
+            Primzahlkörper und algebraische Strukturen
+        </p>
+    </header>
+
+
+    <nav>
+        <button onclick="showSection('home')">
+            Einführung
+        </button>
+
+        <button onclick="showSection('modulo')">
+            Modulare Arithmetik
+        </button>
+
+        <button onclick="showSection('primkoerper')">
+            Primzahlkörper
+        </button>
+
+        <button onclick="showSection('algebra')">
+            Algebraische Strukturen
+        </button>
+
+        <button onclick="showSection('quiz')">
+            Quiz
+        </button>
+    </nav>
+
+
+    <main>
+
+    <section id="home" class="content-section active">
+
+            <h2>Willkommen bei ModuloMaster</h2>
+
+        <p>
+            Diese Lernapp vermittelt die Grundlagen der
+            modularen Arithmetik, von Primzahlkörpern und
+            algebraischen Strukturen.
+        </p>
+
+        <hr>
+
+        <h3>Modulare Arithmetik</h3>
+
+        <p>
+            In der modularen Arithmetik betrachtet man
+            den Rest einer Division.
+        </p>
+
+        <p>
+            Beispiel:
+            17 mod 5 = 2
+        </p>
+
+        <p>
+            Die Zahlen werden dabei zyklisch betrachtet,
+            ähnlich wie auf einer Uhr.
+        </p>
+
+        <hr>
+
+        <h3>Primzahlkörper</h3>
+
+        <p>
+            Ein Primzahlkörper besitzt die Form Zₚ,
+            wobei p eine Primzahl ist.
+        </p>
+
+        <p>
+            In solchen Körpern besitzt jede Nicht-Null-Zahl
+            ein multiplikatives Inverses.
+        </p>
+
+        <p>
+            Primzahlkörper bilden die Grundlage vieler
+            kryptographischer Verfahren.
+        </p>
+
+        <hr>
+
+        <h3>Algebraische Strukturen</h3>
+
+        <p>
+            Algebraische Strukturen beschreiben Mengen mit
+            Verknüpfungen und bestimmten Eigenschaften.
+        </p>
+
+        <ul>
+            <li><strong>Gruppe:</strong> neutrales Element und Inverse vorhanden</li>
+            <li><strong>Ring:</strong> Addition und Multiplikation definiert</li>
+            <li><strong>Körper:</strong> Division durch alle Nicht-Null-Elemente möglich</li>
+        </ul>
+
+        <hr>
+
+        <h3>Anwendungen</h3>
+
+        <ul>
+            <li>RSA-Verschlüsselung</li>
+            <li>IT-Sicherheit</li>
+            <li>Kryptographie</li>
+            <li>Fehlerkorrekturcodes</li>
+            <li>Moderne Kommunikationstechnik</li>
+        </ul>
+
+         <hr>
+
+         <h3>Was kann diese App?</h3>
+
+         <ul>
+             <li>Modulo-Rechnungen durchführen</li>
+             <li>Modulo-Kreise visualisieren</li>
+             <li>Primzahlen testen</li>
+             <li>Inverse Elemente bestimmen</li>
+             <li>Algebraische Strukturen untersuchen</li>
+             <li>Cayley-Tabellen erzeugen</li>
+             <li>Wissen mit Quizfragen überprüfen</li>
+         </ul>
+
+    </section>
+
+        <!-- MODULARE ARITHMETIK -->
+
+        <section id="modulo" class="content-section">
+
+            <h2>Modulare Arithmetik</h2>
+
+            <p>
+                In der modularen Arithmetik rechnet man mit Resten.
+            </p>
+
+            <p>
+                \(17 \equiv 2 \pmod 5\)
+            </p>
+
+            <h3>Modulo Rechner</h3>
+
+            <input type="number" id="zahl1"
+                   placeholder="Zahl">
+
+            <input type="number" id="zahl2"
+                   placeholder="Modulo">
+
+            <button onclick="berechneModulo()">
+                Berechnen
+            </button>
+
+            <p id="moduloErgebnis"></p>
+
+            <h3>Dynamischer Modulo-Kreis</h3>
+
+<div id="circleContainer"></div>
+
+        </section>
+
+
+        <!-- PRIMZAHLKÖRPER -->
+
+        <section id="primkoerper" class="content-section">
+
+            <h2>Primzahlkörper</h2>
+
+            <p>
+                Ein Primzahlkörper besitzt die Form:
+            </p>
+
+            <p>
+                \(\mathbb{Z}_p\)
+            </p>
+
+            <p>
+                wobei \(p\) eine Primzahl ist.
+            </p>
+
+
+            <h3>Primzahltest</h3>
+
+            <input type="number"
+                   id="primzahlInput"
+                   placeholder="Zahl eingeben">
+
+            <button onclick="pruefePrimzahl()">
+                Prüfen
+            </button>
+
+            <p id="primzahlErgebnis"></p>
+
+
+            <h3>Addition modulo p</h3>
+
+            <input type="number" id="add1"
+                   placeholder="a">
+
+            <input type="number" id="add2"
+                   placeholder="b">
+
+            <input type="number" id="modP"
+                   placeholder="p">
+
+            <button onclick="addiereFp()">
+                Berechnen
+            </button>
+
+            <p id="additionErgebnis"></p>
+
+
+            <h3>Multiplikatives Inverses</h3>
+
+            <input type="number" id="inverseA"
+                   placeholder="a">
+
+            <input type="number" id="inverseP"
+                   placeholder="p">
+
+            <button onclick="findeInverse()">
+                Inverses finden
+            </button>
+
+            <p id="inverseErgebnis"></p>
+
+            </section>
+
+
+            <!-- ALGEBRAISCHE STRUKTUREN -->
+
+            <section id="algebra" class="content-section">
+
+                <h2>Algebraische Strukturen</h2>
+
+                <div class="card-grid">
+
+                    <div class="card">
+                        <h3>Gruppe</h3>
+
+                        <ul>
+                            <li>Assoziativität</li>
+                            <li>Neutrales Element</li>
+                            <li>Inverse Elemente</li>
+                        </ul>
+                    </div>
+
+
+                    <div class="card">
+                        <h3>Ring</h3>
+
+                        <ul>
+                            <li>Addition und Multiplikation</li>
+                            <li>Distributivgesetz</li>
+                        </ul>
+                    </div>
+
+
+                    <div class="card">
+                        <h3>Körper</h3>
+
+                        <ul>
+                            <li>Division möglich</li>
+                            <li>Alle Nichtnullzahlen besitzen Inverse</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <h3>Strukturprüfung</h3>
+
+                <label>
+                <input type="checkbox" id="asso">
+                Assoziativität
+                </label>
+
+                <br>
+
+                <label>
+                <input type="checkbox" id="neutral">
+                Neutrales Element
+                </label>
+
+                <br>
+
+                <label>
+                <input type="checkbox" id="inverse">
+                Inverse Elemente
+                </label>
+
+                <br>
+
+                <label>
+                <input type="checkbox" id="division">
+                Division möglich
+                </label>
+
+                <br><br>
+
+                <button onclick="pruefeStruktur()">
+                Prüfen
+                </button>
+
+                <p id="strukturErgebnis"></p>
+
+                <h3>Cayley-Tabelle erzeugen</h3>
+
+                <input
+                type="number"
+                id="cayleyP"
+                placeholder="Modulo p">
+
+                <button onclick="generateCayleyTable()">
+                Tabelle erzeugen
+                </button>
+
+                <div id="cayleyOutput"></div>
+
+
+                </section>
+                
+                
+        <!-- QUIZ -->
+
+        <section id="quiz" class="content-section">
+
+            <h2>Quiz</h2>
+
+            <p id="quizFrage"></p>
+
+            <input type="number"
+                   id="quizAntwort"
+                   placeholder="Antwort eingeben">
+
+            <button onclick="pruefeQuiz()">
+                Prüfen
+            </button>
+
+            <button onclick="neueQuizFrage()">
+                Neue Aufgabe
+            </button>
+
+            <p id="quizErgebnis"></p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            ModuloMaster — Lernplattform für Algebra
+        </p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
+
